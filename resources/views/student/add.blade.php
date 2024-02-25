@@ -11,9 +11,23 @@
       <div class="row">
         <div class="col s12">
           <div class="col-12">
-            <h2 class="col-9">ADD STUDENT</h2>
+            <h2 class="col-9">ADD STUDENT - LARAVEL 10</h2>
             <hr>
-            <form>
+
+            @if (session('status'))
+              <div class="alert alert-success">
+                {{session('status')}}
+              </div>
+            @endif
+
+            <ul>
+              @foreach($errors->all() as $error)
+                <li class="alert alert-danger">{{$error}}</li>
+              @endforeach
+            </ul>
+            <form action="/add/loading" method="POST" class="form-group">
+              @csrf
+
               <div class="form-group">
                 <label for="firstName" class="form-label">First name</label>
                 <input type="text" class="form-control" id="firstName" name="firstName">
