@@ -14,6 +14,14 @@
             <h2 class="col-9">CRUD IN LARAVEL 10</h2>
             <a href="/add" class="btn btn-primary col-2">Add Student</a>
           </div>
+          <hr>
+          
+
+          @if (session('status'))
+            <div class="alert alert-success">
+              {{session('status')}}
+            </div>
+          @endif
           <table class="table">
             <thead class="table-light">
               <tr>
@@ -25,28 +33,28 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                <td>
-                  <a href="#" class="btn btn-secondary">update</a>
-                  <a href="#" class="btn btn-danger">Delete</a>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-                <td>
-                  <a href="#" class="btn btn-secondary">update</a>
-                  <a href="#" class="btn btn-danger">Delete</a>
-                </td>
-              </tr>
+              @php
+                $ide = 1
+              @endphp
+              @foreach($students as $student)
+                <tr>
+                  <th scope="row">{{$ide}}</th>
+                  <td>{{$student->firstName}}</td>
+                  <td>{{$student->lastName}}</td>
+                  <td>{{$student->class}}</td>
+                  <td>
+                    <a href="/update-student/{{$student->id}}" class="btn btn-secondary">update</a>
+                    <a href="/delete-student/{{$student->id}}" class="btn btn-danger">Delete</a>
+                  </td>
+                </tr>
+                
+                @php
+                  $ide += 1
+                @endphp
+              @endforeach
             </tbody>
           </table>
+          {{$students->links()}}
         </div>
       </div>
     </div>
