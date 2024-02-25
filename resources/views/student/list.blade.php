@@ -7,22 +7,27 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   </head>
   <body>
-    <div class="container text-center">
+    <div class="container border my-5">
       <div class="row">
-        <div class="col s12">
-          <div class="col-12">
-            <h2 class="col-9">CRUD IN LARAVEL 10</h2>
-            <a href="/add" class="btn btn-primary col-2">Add Student</a>
+        <div class="col-lg-12">
+          <div class="panel-heading mb-2">
+            <div class="row">
+              <div class="m-2" >
+                <h2 class="panel-title">CRUD IN LARAVEL 10</h2>
+              </div>
+              <div class="" align="right">
+                <a href="/add" class="btn btn-primary col-2">Add Student +</a>
+              </div>
+            </div>
           </div>
           <hr>
-          
-
+      
           @if (session('status'))
             <div class="alert alert-success">
               {{session('status')}}
             </div>
           @endif
-          <table class="table">
+          <table class="table text-center" border="1" cellpadding="5" cellspacing="0">
             <thead class="table-light">
               <tr>
                 <th scope="col">#</th>
@@ -39,7 +44,7 @@
               @foreach($students as $student)
                 <tr>
                   <th scope="row">{{$ide}}</th>
-                  <td>{{$student->firstName}}</td>
+                  <td >{{$student->firstName}}</td>
                   <td>{{$student->lastName}}</td>
                   <td>{{$student->class}}</td>
                   <td>
